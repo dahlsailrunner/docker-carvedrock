@@ -1,0 +1,8 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs/CarvedRock.Docker/v16
+/CarvedRock.Api/bin/Debug/net5.0
+/CarvedRock.Api/obj
+/CarvedRock.Api/CarvedRock.Api.csproj.user
