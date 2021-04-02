@@ -6,6 +6,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using CarvedRock.Api.Domain;
 using CarvedRock.Api.Interfaces;
+using CarvedRock.Api.Middleware;
 
 namespace CarvedRock.Api
 {
@@ -32,9 +33,9 @@ namespace CarvedRock.Api
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            app.UseMiddleware<CustomExceptionHandlingMiddleware>();
             if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
+            {                
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "CarvedRock.Api v1"));
             }

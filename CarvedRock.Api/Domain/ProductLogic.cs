@@ -24,8 +24,15 @@ namespace CarvedRock.Api.Domain
 
             if (!_validCategories.Any(c => string.Equals(category, c, StringComparison.InvariantCultureIgnoreCase)))
             {
+                // invalid category -- bad request
                 throw new ApplicationException($"Unrecognized category: {category}.  " +
                                                $"Valid categories are: [{string.Join(",", _validCategories)}]");
+            }
+
+            if (string.Equals(category, "kayaks", StringComparison.InvariantCultureIgnoreCase))
+            {
+                // simulate database error or real technical error like not implemented exception
+                throw new Exception("Not implemented! No kayaks have been defined in 'database' yet!!!!");
             }
 
             return GetAllProducts().Where(a =>
