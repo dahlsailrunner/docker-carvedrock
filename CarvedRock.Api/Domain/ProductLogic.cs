@@ -20,7 +20,7 @@ namespace CarvedRock.Api.Domain
 
         public IEnumerable<Product> GetProductsForCategory(string category)
         {
-            _logger.LogInformation("Starting logic to get products", category);
+            //_logger.LogInformation("Starting logic to get products", category);
 
             if (!_validCategories.Any(c => string.Equals(category, c, StringComparison.InvariantCultureIgnoreCase)))
             {
