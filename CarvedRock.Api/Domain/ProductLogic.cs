@@ -26,7 +26,7 @@ namespace CarvedRock.Api.Domain
             {
                 // invalid category -- bad request
                 throw new ApplicationException($"Unrecognized category: {category}.  " +
-                                               $"Valid categories are: [{string.Join(",", _validCategories)}]");
+                         $"Valid categories are: [{string.Join(",", _validCategories)}]");
             }
 
             if (string.Equals(category, "kayaks", StringComparison.InvariantCultureIgnoreCase))
