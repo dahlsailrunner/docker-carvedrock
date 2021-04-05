@@ -22,7 +22,8 @@ namespace CarvedRock.Api.Domain
         {
             //_logger.LogInformation("Starting logic to get products", category);
 
-            if (!_validCategories.Any(c => string.Equals(category, c, StringComparison.InvariantCultureIgnoreCase)))
+            if (!_validCategories.Any(c => 
+                string.Equals(category, c, StringComparison.InvariantCultureIgnoreCase)))
             {
                 // invalid category -- bad request
                 throw new ApplicationException($"Unrecognized category: {category}.  " +

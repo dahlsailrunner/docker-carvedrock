@@ -11,6 +11,7 @@ namespace CarvedRock.Api
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
+            // http://bit.ly/aspnet-builder-defaults
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
