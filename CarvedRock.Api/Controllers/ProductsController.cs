@@ -2,6 +2,7 @@
 using CarvedRock.Api.ApiModels;
 using CarvedRock.Api.Interfaces;
 using Microsoft.AspNetCore.Mvc;
+using Serilog;
 
 namespace CarvedRock.Api.Controllers
 {
@@ -19,6 +20,10 @@ namespace CarvedRock.Api.Controllers
         [HttpGet]
         public IEnumerable<Product> GetProducts(string category = "all")
         {
+            //Log.Information("Starting controller action GetProducts for {category}", category);
+            Log.ForContext("Category", category)
+               .Information("Starting controller action GetProducts");
+
             return _productLogic.GetProductsForCategory(category);
         }
     }

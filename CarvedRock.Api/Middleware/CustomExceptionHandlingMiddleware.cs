@@ -2,20 +2,18 @@ using System;
 using System.Net;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.Logging;
+using Serilog;
 
 namespace CarvedRock.Api.Middleware
 {
     public class CustomExceptionHandlingMiddleware 
     {
         private readonly RequestDelegate _next;
-        private readonly ILogger _logger;
- 
-        public CustomExceptionHandlingMiddleware(RequestDelegate next, 
-                ILogger<CustomExceptionHandlingMiddleware> logger)
+
+        public CustomExceptionHandlingMiddleware(RequestDelegate next
+                )
         {
             _next = next;
-            _logger = logger;
         }
  
         public async Task InvokeAsync(HttpContext context)
@@ -34,14 +32,16 @@ namespace CarvedRock.Api.Middleware
         {            
             if (exception is ApplicationException)
             {       
-                _logger.LogWarning("Validation error occurred in API. {message}", exception.Message);         
+                Log.ForContext("ValidationError", exception.Message)
+                   .Warning("Validation error occurred in API.");         
                 context.Response.StatusCode = (int)HttpStatusCode.BadRequest;                
                 return context.Response.WriteAsJsonAsync(new { exception.Message });
             }
             else 
             {
                 var errorId = Guid.NewGuid(); 
-                _logger.LogError(exception, "Error occured in API: {ErrorId}", errorId);              
+                Log.ForContext("ErrorId", errorId)
+                   .Error(exception, "Error occured in API");              
                 context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
                 return context.Response.WriteAsJsonAsync(new {
                     ErrorId = errorId,

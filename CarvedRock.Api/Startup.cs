@@ -40,6 +40,8 @@ namespace CarvedRock.Api
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "CarvedRock.Api v1"));
             }
 
+            app.UseCustomRequestLogging();
+            
             app.UseRouting();
             app.UseAuthorization();
             app.UseEndpoints(endpoints =>

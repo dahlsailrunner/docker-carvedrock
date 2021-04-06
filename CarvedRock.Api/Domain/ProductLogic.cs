@@ -12,7 +12,6 @@ namespace CarvedRock.Api.Domain
         private readonly ILogger<ProductLogic> _logger;
         private readonly List<string> _validCategories = new List<string> {"all", "boots", "climbing gear", "kayaks"};
 
-
         public ProductLogic(ILogger<ProductLogic> logger)
         {
             _logger = logger;
@@ -20,7 +19,7 @@ namespace CarvedRock.Api.Domain
 
         public IEnumerable<Product> GetProductsForCategory(string category)
         {
-            //_logger.LogInformation("Starting logic to get products", category);
+            _logger.LogInformation("Starting logic to get products for {category}", category);
 
             if (!_validCategories.Any(c => 
                 string.Equals(category, c, StringComparison.InvariantCultureIgnoreCase)))
