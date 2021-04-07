@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "CarvedRock.InvoiceGenerator": {
+      "commandName": "Project"
+    },
+    "Docker": {
+      "commandName": "Docker"
+    }
+  }
+}
