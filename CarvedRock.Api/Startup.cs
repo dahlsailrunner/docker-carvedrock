@@ -7,6 +7,7 @@ using Microsoft.OpenApi.Models;
 using CarvedRock.Api.Domain;
 using CarvedRock.Api.Interfaces;
 using CarvedRock.Api.Middleware;
+using Serilog;
 
 namespace CarvedRock.Api
 {
@@ -21,6 +22,15 @@ namespace CarvedRock.Api
 
         public void ConfigureServices(IServiceCollection services)
         {
+            var connectionString = "hello"; //ConnectionStrings:Db
+            var simpleProperty = "hey";     // SimpleProperty
+            var nestedProp = "here we go";  // Inventory->NestedProperty
+
+            Log.ForContext("ConnectionString", connectionString)
+                .ForContext("SimpleProperty", simpleProperty)
+                .ForContext("Inventory:NestedProperty", nestedProp)
+                .Information("Loaded configuration!", connectionString);
+
             services.AddScoped<IProductLogic, ProductLogic>();
             services.AddScoped<IQuickOrderLogic, QuickOrderLogic>();
 
@@ -32,7 +42,7 @@ namespace CarvedRock.Api
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
-        {
+        {            
             app.UseMiddleware<CustomExceptionHandlingMiddleware>();
             if (env.IsDevelopment())
             {                

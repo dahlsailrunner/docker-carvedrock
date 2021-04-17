@@ -36,7 +36,7 @@
             "processId": "${command:pickProcess}"
         },
         {
-            "name": "Docker .NET Core Launch",
+            "name": "API: Docker .NET Core Launch",
             "type": "docker",
             "request": "launch",
             "preLaunchTask": "docker-run: debug",
