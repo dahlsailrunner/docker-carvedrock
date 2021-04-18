@@ -22,9 +22,13 @@ namespace CarvedRock.Api
 
         public void ConfigureServices(IServiceCollection services)
         {
-            var connectionString = "hello"; //ConnectionStrings:Db
-            var simpleProperty = "hey";     // SimpleProperty
-            var nestedProp = "here we go";  // Inventory->NestedProperty
+            //var connectionString = "hello"; //ConnectionStrings:Db
+            var connectionString = Configuration.GetConnectionString("Db");
+
+            //var simpleProperty = "hey";     // SimpleProperty
+            var simpleProperty = Configuration.GetValue<string>("SimpleProperty");
+            //var nestedProp = "here we go";  // Inventory->NestedProperty
+            var nestedProp = Configuration.GetValue<string>("Inventory:NestedProperty");
 
             Log.ForContext("ConnectionString", connectionString)
                 .ForContext("SimpleProperty", simpleProperty)
