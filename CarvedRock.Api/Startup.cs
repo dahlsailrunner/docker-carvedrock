@@ -30,10 +30,14 @@ namespace CarvedRock.Api
             //var nestedProp = "here we go";  // Inventory->NestedProperty
             var nestedProp = Configuration.GetValue<string>("Inventory:NestedProperty");
 
-            Log.ForContext("ConnectionString", connectionString)
-                .ForContext("SimpleProperty", simpleProperty)
-                .ForContext("Inventory:NestedProperty", nestedProp)
-                .Information("Loaded configuration!", connectionString);
+            // Log.ForContext("ConnectionString", connectionString)
+            //     .ForContext("SimpleProperty", simpleProperty)
+            //     .ForContext("Inventory:NestedProperty", nestedProp)
+            //     .Information("Loaded configuration!", connectionString);
+
+            var dbgView = (Configuration as IConfigurationRoot).GetDebugView();
+            Log.ForContext("ConfigurationDebug", dbgView)
+                .Information("Configuration dump.");
 
             services.AddScoped<IProductLogic, ProductLogic>();
             services.AddScoped<IQuickOrderLogic, QuickOrderLogic>();

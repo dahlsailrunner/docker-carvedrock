@@ -79,13 +79,15 @@
             ],
             "dockerRun": {
                 "env": {
-                    "ASPNETCORE_ENVIRONMENT": "Development"
+                    "ASPNETCORE_ENVIRONMENT": "Development",
+                    "SimpleProperty": "fascinating-things-from-vscode",
+                    "Inventory__NestedProperty": "so-many-amazing-things-to-learn"
                 }
             },
             "netCore": {
                 "appProject": "${workspaceFolder}/CarvedRock.Api/CarvedRock.Api.csproj",
                 "enableDebugging": true,
-                "configureSsl": false
+                "configureSsl": false,                
             }
         },
         {
