@@ -10,9 +10,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarvedRock.InvoiceGenerator", "CarvedRock.InvoiceGenerator\CarvedRock.InvoiceGenerator.csproj", "{BBAB211F-3DF8-4543-A880-888C6DE1AB71}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarvedRock.InvoiceGenerator", "CarvedRock.InvoiceGenerator\CarvedRock.InvoiceGenerator.csproj", "{BBAB211F-3DF8-4543-A880-888C6DE1AB71}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarvedRock.OrderProcessor", "CarvedRock.OrderProcessor\CarvedRock.OrderProcessor.csproj", "{C65F0576-DD10-417E-BC9D-47A6C8092A81}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarvedRock.OrderProcessor", "CarvedRock.OrderProcessor\CarvedRock.OrderProcessor.csproj", "{C65F0576-DD10-417E-BC9D-47A6C8092A81}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarvedRock.App", "CarvedRock.App\CarvedRock.App.csproj", "{0FF39336-76A8-4628-81F8-6CD464E6258C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -32,6 +34,10 @@ Global
 		{C65F0576-DD10-417E-BC9D-47A6C8092A81}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C65F0576-DD10-417E-BC9D-47A6C8092A81}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C65F0576-DD10-417E-BC9D-47A6C8092A81}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0FF39336-76A8-4628-81F8-6CD464E6258C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0FF39336-76A8-4628-81F8-6CD464E6258C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0FF39336-76A8-4628-81F8-6CD464E6258C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0FF39336-76A8-4628-81F8-6CD464E6258C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
