@@ -1,3 +1,4 @@
+using System.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -9,6 +10,8 @@ using CarvedRock.Api.Integrations;
 using CarvedRock.Api.Interfaces;
 using CarvedRock.Api.Middleware;
 using Serilog;
+using System.Data.SqlClient;
+using CarvedRock.Api.Repository;
 
 namespace CarvedRock.Api
 {
@@ -36,13 +39,16 @@ namespace CarvedRock.Api
             //     .ForContext("Inventory:NestedProperty", nestedProp)
             //     .Information("Loaded configuration!", connectionString);
 
-            var dbgView = (Configuration as IConfigurationRoot).GetDebugView();
-            Log.ForContext("ConfigurationDebug", dbgView)
-                .Information("Configuration dump.");
+            //var dbgView = (Configuration as IConfigurationRoot).GetDebugView();
+            //Log.ForContext("ConfigurationDebug", dbgView)
+            //    .Information("Configuration dump.");
 
             services.AddScoped<IProductLogic, ProductLogic>();
             services.AddScoped<IQuickOrderLogic, QuickOrderLogic>();
             services.AddSingleton<IOrderProcessingNotification, OrderProcessingNotification>();
+
+            services.AddScoped<IDbConnection>(d => new SqlConnection(connectionString));
+            services.AddScoped<ICarvedRockRepository, CarvedRockRepository>();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
