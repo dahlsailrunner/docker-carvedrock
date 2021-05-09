@@ -1,0 +1,38 @@
+version: '3.4'
+
+services:
+  carvedrock.api:    
+    build:
+      context: .
+      dockerfile: CarvedRock.Api/Dockerfile
+    ports:
+      - "8080:80"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - SimpleProperty="hello-from-code-compose"
+    depends_on: 
+      - seq_in_dc
+      - rabbit_in_dc
+      
+  carvedrock.app:
+    build:
+      context: .
+      dockerfile: CarvedRock.App/Dockerfile
+    ports:
+      - "8081:80"
+    depends_on: 
+      - seq_in_dc
+
+  seq_in_dc:    
+    image: datalust/seq    
+    ports:
+      - '8005:80'      
+    environment:
+      - ACCEPT_EULA=Y 
+
+  rabbit_in_dc:
+    image: rabbitmq:3-management
+    ports:
+      - 8088:15672
+  
+

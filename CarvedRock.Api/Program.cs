@@ -20,7 +20,7 @@ namespace CarvedRock.Api
                 // available sinks: https://github.com/serilog/serilog/wiki/Provided-Sinks
                 // Seq: https://datalust.co/seq
                 // Seq with Docker: https://docs.datalust.co/docs/getting-started-with-docker
-                .WriteTo.Seq(serverUrl: "http://host.docker.internal:5341")
+                .WriteTo.Seq(serverUrl: "http://seq_in_dc:5341")
                 .WriteTo.Console()
                 .CreateLogger();
 

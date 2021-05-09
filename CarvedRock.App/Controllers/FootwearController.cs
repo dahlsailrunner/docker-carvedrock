@@ -1,5 +1,6 @@
 ﻿using System.Threading.Tasks;
 using CarvedRock.App.Integrations;
+using CarvedRock.App.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CarvedRock.App.Controllers
@@ -20,9 +21,11 @@ namespace CarvedRock.App.Controllers
             return View(products);
         }
 
-        public IActionResult QuickOrder(int id)
+        public async Task<IActionResult> QuickOrder(int id)
         {
-            return View("QuickOrderConfirmation");
+            var orderId = await _apiClient.PlaceQuickOrder(new QuickOrder {ProductId = id, Quantity = 1});
+
+            return View("QuickOrderConfirmation", orderId);
         }
     }
 }

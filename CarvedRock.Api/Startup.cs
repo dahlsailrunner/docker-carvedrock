@@ -5,6 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using CarvedRock.Api.Domain;
+using CarvedRock.Api.Integrations;
 using CarvedRock.Api.Interfaces;
 using CarvedRock.Api.Middleware;
 using Serilog;
@@ -41,6 +42,7 @@ namespace CarvedRock.Api
 
             services.AddScoped<IProductLogic, ProductLogic>();
             services.AddScoped<IQuickOrderLogic, QuickOrderLogic>();
+            services.AddSingleton<IOrderProcessingNotification, OrderProcessingNotification>();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>

@@ -14,7 +14,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarvedRock.InvoiceGenerator
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarvedRock.OrderProcessor", "CarvedRock.OrderProcessor\CarvedRock.OrderProcessor.csproj", "{C65F0576-DD10-417E-BC9D-47A6C8092A81}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarvedRock.App", "CarvedRock.App\CarvedRock.App.csproj", "{0FF39336-76A8-4628-81F8-6CD464E6258C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarvedRock.App", "CarvedRock.App\CarvedRock.App.csproj", "{0FF39336-76A8-4628-81F8-6CD464E6258C}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{833B1284-995B-40F4-9979-A7FDED266FF9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -38,6 +40,10 @@ Global
 		{0FF39336-76A8-4628-81F8-6CD464E6258C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0FF39336-76A8-4628-81F8-6CD464E6258C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0FF39336-76A8-4628-81F8-6CD464E6258C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{833B1284-995B-40F4-9979-A7FDED266FF9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{833B1284-995B-40F4-9979-A7FDED266FF9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{833B1284-995B-40F4-9979-A7FDED266FF9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{833B1284-995B-40F4-9979-A7FDED266FF9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
