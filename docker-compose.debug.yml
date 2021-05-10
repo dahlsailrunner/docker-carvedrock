@@ -17,11 +17,48 @@ services:
       - seq_in_dc
     volumes:
       - ~/.vsdbg:/remote_debugger:rw
-     
+
+  carvedrock.app:
+    build:
+      context: .
+      dockerfile: CarvedRock.App/Dockerfile
+    ports:
+      - "8081:80"
+    depends_on: 
+      - seq_in_dc
+    volumes:
+      - ~/.vsdbg:/remote_debugger:rw
+    
+  carvedrock.orderprocessor:
+    build:
+      context: .
+      dockerfile: CarvedRock.OrderProcessor/Dockerfile    
+    depends_on: 
+      - seq_in_dc
+      - rabbit_in_dc
+      - sql_in_dc
+    volumes:
+      - ~/.vsdbg:/remote_debugger:rw
 
   seq_in_dc:    
     image: datalust/seq    
     ports:
       - '8005:80'      
     environment:
-      - ACCEPT_EULA=Y  
+      - ACCEPT_EULA=Y    
+  
+    rabbit_in_dc:
+      image: rabbitmq:3-management
+      ports:
+        - 8088:15672
+  
+    sql_in_dc:
+      build:
+        context: .
+        dockerfile: sql/sql.Dockerfile
+      restart: always
+      ports:
+        - "1440:1433"   
+      environment:      
+        - ACCEPT_EULA=Y
+        - SA_PASSWORD=Sqlc0ntainersFTW!  
