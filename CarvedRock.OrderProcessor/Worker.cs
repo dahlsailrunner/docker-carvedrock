@@ -17,8 +17,8 @@ namespace CarvedRock.OrderProcessor
         private readonly IInventoryRepository _repo;
         private readonly IConnection _connection;
         private readonly IModel _channel;
-        private string queueName = "quickorder.received";
-        private EventingBasicConsumer _consumer;
+        private const string QueueName = "quickorder.received";
+        private readonly EventingBasicConsumer _consumer;
 
         public Worker(IConfiguration config, IInventoryRepository repo)
         {
@@ -44,7 +44,7 @@ namespace CarvedRock.OrderProcessor
             }
             
             _channel = _connection.CreateModel();
-            _channel.QueueDeclare(queue: queueName, durable: false, exclusive: false, autoDelete: false,
+            _channel.QueueDeclare(queue: QueueName, durable: false, exclusive: false, autoDelete: false,
                 arguments: null);
 
             _consumer = new EventingBasicConsumer(_channel);
@@ -55,7 +55,7 @@ namespace CarvedRock.OrderProcessor
         {
             while (!stoppingToken.IsCancellationRequested)
             {
-                _channel.BasicConsume(queue: queueName, autoAck: true, consumer: _consumer);
+                _channel.BasicConsume(queue: QueueName, autoAck: true, consumer: _consumer);
             }
 
             return Task.CompletedTask;

@@ -1,6 +1,7 @@
 # Carved Rock - Docker 
 This repo contains some simple code that illustrates .NET applications targeting 
-Docker containers.
+Docker containers.  It corresponds to the "final" code that you end up with when completing 
+my Pluralsight course: [Developing .NET Core Apps with Docker](https://app.pluralsight.com/library/courses/docker-dot-net-core-apps-developing)
 
 ## Initial Creation Notes
 The project was created by using the ASP.NET Web API (.NET 5 - C#) template and including Docker Support.
